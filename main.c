@@ -6,7 +6,7 @@
 /*   By: xmatute- <xmatute-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:09:59 by xmatute-          #+#    #+#             */
-/*   Updated: 2025/01/27 18:09:01 by xmatute-         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:55:23 by xmatute-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ int main()
 
     strlen_test(str);
     strcpy_test(str);
-    strcmp_test(str, "");
+    strcmp_test(str, str);
+    strcmp_test(str, "Hola Manolo!");
     
     printf("\n");
     free(str);
@@ -98,6 +99,7 @@ int main()
 
     strlen_test(empty_str);
     strcpy_test(empty_str);
+    strcmp_test(empty_str, empty_str);
 
     free(empty_str);
     
