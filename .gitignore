@@ -63,3 +63,5 @@ gpc.c
 printfileinfo.c
 
 test
+
+log
