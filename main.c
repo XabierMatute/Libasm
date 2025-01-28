@@ -6,7 +6,7 @@
 /*   By: xmatute- <xmatute-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:09:59 by xmatute-          #+#    #+#             */
-/*   Updated: 2025/01/27 18:55:23 by xmatute-         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:44:46 by xmatute-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ extern char     *ft_strdup(const char *s);
 
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 int strlen_test(char *str)
 {
@@ -83,6 +85,76 @@ int strcmp_test(char *s1, char *s2)
     }
 }
 
+int write_test(int fd, char *str, size_t count)
+{
+    printf("str: %s\n", str);
+    printf("write: %zd\n", write(fd, str, count));
+    printf("ft_write: %zd\n", ft_write(fd, str, count));
+    if (ft_write(fd, str, count) == write(fd, str, count))
+    {
+        printf("ft_write: OK\n");
+        return (1);
+    }
+    else
+    {
+        printf("ft_write: KO\n");
+        return (0);
+    }
+}
+
+int read_test(char * file, size_t n)
+{
+    char *buf = malloc(n + 1);
+    char *ft_buf = malloc(n + 1);
+    int fd = open(file, O_RDONLY);
+    int ft_fd = open(file, O_RDONLY);
+
+    printf("file: %s\n", file);
+    printf("read: %zd\n", read(fd, buf, n));
+    printf("buf: %s\n", buf);
+    printf("ft_read: %zd\n", ft_read(ft_fd, ft_buf, n));
+    printf("ft_buf: %s\n", ft_buf);
+
+    if (strcmp(buf, ft_buf) == 0)
+    {
+        printf("ft_read: OK\n");
+        free(buf);
+        free(ft_buf);
+        return (1);
+    }
+    else
+    {
+        printf("ft_read: KO\n");
+        free(buf);
+        free(ft_buf);
+        return (0);
+    }
+}
+
+int strdup_test(char *str)
+{
+    char *cpy = strdup(str);
+    char *ft_cpy = ft_strdup(str);
+
+    printf("str: %s\n", str);
+    printf("strdup: %s\n", cpy);
+    printf("ft_strdup: %s\n", ft_cpy);
+    if (strcmp(cpy, ft_cpy) == 0)
+    {
+        printf("ft_strdup: OK\n");
+        free(cpy);
+        free(ft_cpy);
+        return (1);
+    }
+    else
+    {
+        printf("ft_strdup: KO\n");
+        free(cpy);
+        free(ft_cpy);
+        return (0);
+    }
+}
+
 int main()
 {
     char *str = strdup("Agur Pallete!");
@@ -91,6 +163,8 @@ int main()
     strcpy_test(str);
     strcmp_test(str, str);
     strcmp_test(str, "Hola Manolo!");
+    write_test(1, str, strlen(str));
+    strdup_test(str);
     
     printf("\n");
     free(str);
@@ -100,8 +174,14 @@ int main()
     strlen_test(empty_str);
     strcpy_test(empty_str);
     strcmp_test(empty_str, empty_str);
+    write_test(1, empty_str, strlen(empty_str));
+    strdup_test(empty_str);
 
     free(empty_str);
+
+    char *file = strdup("main.c");
+    read_test(file, 100);
+    free(file);
     
     return (0);
 }
