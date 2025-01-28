@@ -65,3 +65,5 @@ printfileinfo.c
 test
 
 log
+elog
+logs
