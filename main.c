@@ -6,19 +6,11 @@
 /*   By: xmatute- <xmatute-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:09:59 by xmatute-          #+#    #+#             */
-/*   Updated: 2025/01/28 13:44:46 by xmatute-         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:08:31 by xmatute-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stddef.h>
-# include <stdlib.h>
-
-extern size_t   ft_strlen(const char *s);
-extern char     *ft_strcpy(char *dst, const char *src);
-extern int      ft_strcmp(const char *s1, const char *s2);
-extern ssize_t  ft_write(int fd, const void *buf, size_t count);
-extern ssize_t  ft_read(int fd, void *buf, size_t count);
-extern char     *ft_strdup(const char *s);
+#include "libasm.h"
 
 #include <stdio.h>
 #include <string.h>
