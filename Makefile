@@ -6,7 +6,7 @@
 #    By: xmatute- <xmatute-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 16:24:18 by xmatute-          #+#    #+#              #
-#    Updated: 2025/01/27 17:25:27 by xmatute-         ###   ########.fr        #
+#    Updated: 2025/01/29 17:23:26 by xmatute-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,8 +57,8 @@ SANI 	:= -fsanitize=address -g3
 ASM     := nasm
 AFLAGS  := -f elf64
 
-CC 		:= gcc
-CFLAGS 	:= -Wall -Wextra -Werror
+CC 		:= cc
+CFLAGS 	:= -Wall -Wextra -Werror -fPIE
 
 CFLAGS	:= $(CFLAGS) $(EFLAGS)
 
